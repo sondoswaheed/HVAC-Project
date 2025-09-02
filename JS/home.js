@@ -91,32 +91,32 @@ window.addEventListener("scroll", checkVisibility);
     });
   }
 
+document.addEventListener('DOMContentLoaded', function () {
+  const collapseElement = document.getElementById('navbarText');
 
-document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-  link.addEventListener('click', function () {
-    const collapseElement = document.getElementById('navbarText');
-    const collapseInstance = bootstrap.Collapse.getInstance(collapseElement);
-
-
-    if (collapseInstance && collapseElement.classList.contains('show')) {
-      collapseInstance.hide();
-    }
+  // كود الروابط
+  document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+    link.addEventListener('click', function () {
+      if (collapseElement) {
+        const collapseInstance = bootstrap.Collapse.getInstance(collapseElement);
+        if (collapseInstance && collapseElement.classList.contains('show')) {
+          collapseInstance.hide();
+        }
+      }
+    });
   });
+
+  // كود زر Call Us
+  const callBtn = document.getElementById('call-btn-link');
+  if (callBtn && collapseElement) {
+    callBtn.addEventListener('click', function () {
+      const collapseInstance = bootstrap.Collapse.getInstance(collapseElement);
+      if (collapseInstance && collapseElement.classList.contains('show')) {
+        collapseInstance.hide();
+      }
+    });
+  }
 });
-
-
-const callBtn = document.getElementById('call-btn-link');
-const collapseElement = document.getElementById('navbarText');
-
-if (callBtn && collapseElement) {
-  callBtn.addEventListener('click', function (e) {
-    const collapseInstance = bootstrap.Collapse.getInstance(collapseElement);
-    if (collapseInstance && collapseElement.classList.contains('show')) {
-      collapseInstance.hide();
-    }
-  });
-}
-
 // service 
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', function () {
