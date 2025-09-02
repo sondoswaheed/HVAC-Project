@@ -103,3 +103,16 @@ document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
     }
   });
 });
+
+
+const callBtn = document.getElementById('call-btn-link');
+const collapseElement = document.getElementById('navbarText');
+
+if (callBtn && collapseElement) {
+  callBtn.addEventListener('click', function (e) {
+    const collapseInstance = bootstrap.Collapse.getInstance(collapseElement);
+    if (collapseInstance && collapseElement.classList.contains('show')) {
+      collapseInstance.hide();
+    }
+  });
+}
