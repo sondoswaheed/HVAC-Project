@@ -69,6 +69,9 @@ window.addEventListener("scroll", checkVisibility);
   window.addEventListener('resize', updateSlider);
 
 
+  
+
+
   //close the navbar on mobile or tablet 
 
   
@@ -87,3 +90,16 @@ window.addEventListener("scroll", checkVisibility);
       }
     });
   }
+
+
+document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+  link.addEventListener('click', function () {
+    const collapseElement = document.getElementById('navbarText');
+    const collapseInstance = bootstrap.Collapse.getInstance(collapseElement);
+
+
+    if (collapseInstance && collapseElement.classList.contains('show')) {
+      collapseInstance.hide();
+    }
+  });
+});
