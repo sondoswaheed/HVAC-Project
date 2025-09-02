@@ -123,20 +123,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   cards.forEach(card => {
     card.addEventListener('click', function () {
-      // نتأكد إننا في وضع الموبايل
-      if (window.innerWidth <= 768) {
-        // لو الكارت اللي ضغطت عليه مفتوح بالفعل → نغلقه
-        if (this.classList.contains('active')) {
-          this.classList.remove('active');
-        }
-        // لو كان مغلق → نفتحه ونقفل التانيين
-        else {
-          // أولاً: نغلق كل الكروت
-          cards.forEach(c => c.classList.remove('active'));
-          // ثانيًا: نفتح الكارت الحالي
-          this.classList.add('active');
-        }
+      // نستخدم active فقط في الموبايل/التابلت
+      if (window.innerWidth <= 992) {
+        // نغلق الكروت التانية
+        cards.forEach(c => {
+          if (c !== this) {
+            c.classList.remove('active');
+          }
+        });
+        // نفتح أو نغلق الكارت الحالي
+        this.classList.toggle('active');
       }
     });
   });
+  
 });
