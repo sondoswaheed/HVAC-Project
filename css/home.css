@@ -276,6 +276,30 @@ h1, h2 {
   line-height: 1.6;
 }
 
+.card .short {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.card .long {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.card:hover .short,
+.card.active .short {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.card:hover .long,
+.card.active .long {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* === Footer === */
 footer {
   text-align: center;

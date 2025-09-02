@@ -116,3 +116,14 @@ if (callBtn && collapseElement) {
     }
   });
 }
+
+// service 
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', function () {
+   
+    if (window.innerWidth <= 992) {
+    
+      this.classList.toggle('active');
+    }
+  });
+});
