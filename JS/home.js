@@ -92,38 +92,51 @@ window.addEventListener("scroll", checkVisibility);
   }
 
 document.addEventListener('DOMContentLoaded', function () {
+  // --- 1. إغلاق القائمة عند الضغط على رابط أو زر "Call Us" ---
   const collapseElement = document.getElementById('navbarText');
 
-  // كود الروابط
-  document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-    link.addEventListener('click', function () {
-      if (collapseElement) {
+  if (collapseElement) {
+    // إغلاق القائمة عند الضغط على رابط
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+      link.addEventListener('click', function () {
         const collapseInstance = bootstrap.Collapse.getInstance(collapseElement);
         if (collapseInstance && collapseElement.classList.contains('show')) {
           collapseInstance.hide();
         }
-      }
+      });
     });
-  });
 
-  // كود زر Call Us
-  const callBtn = document.getElementById('call-btn-link');
-  if (callBtn && collapseElement) {
-    callBtn.addEventListener('click', function () {
-      const collapseInstance = bootstrap.Collapse.getInstance(collapseElement);
-      if (collapseInstance && collapseElement.classList.contains('show')) {
-        collapseInstance.hide();
+    // إغلاق القائمة عند الضغط على "Call Us"
+    const callBtn = document.getElementById('call-btn-link');
+    if (callBtn) {
+      callBtn.addEventListener('click', function () {
+        const collapseInstance = bootstrap.Collapse.getInstance(collapseElement);
+        if (collapseInstance && collapseElement.classList.contains('show')) {
+          collapseInstance.hide();
+        }
+      });
+    }
+  }
+
+  // --- 2. كروت الخدمات: فتح واحد فقط، وإغلاق التاني عند إعادة الضغط ---
+  const cards = document.querySelectorAll('.card');
+
+  cards.forEach(card => {
+    card.addEventListener('click', function () {
+      // نتأكد إننا في وضع الموبايل
+      if (window.innerWidth <= 768) {
+        // لو الكارت اللي ضغطت عليه مفتوح بالفعل → نغلقه
+        if (this.classList.contains('active')) {
+          this.classList.remove('active');
+        }
+        // لو كان مغلق → نفتحه ونقفل التانيين
+        else {
+          // أولاً: نغلق كل الكروت
+          cards.forEach(c => c.classList.remove('active'));
+          // ثانيًا: نفتح الكارت الحالي
+          this.classList.add('active');
+        }
       }
     });
-  }
-});
-// service 
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('click', function () {
-   
-    if (window.innerWidth <= 992) {
-    
-      this.classList.toggle('active');
-    }
   });
 });
