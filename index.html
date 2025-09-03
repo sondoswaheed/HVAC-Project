@@ -409,16 +409,20 @@
 </svg>
 
   <!-- Contact -->
-  <section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <h6 style="font-size: 25px;padding-bottom: 15px;color: #2d6582;">"Have questions? Need service? We’re friendly, local, and ready to help."</h6>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="tel" placeholder="Phone Number" required>
-      <textarea placeholder="Service Needed" required></textarea>
-      <button type="submit">Send Request</button>
-    </form>
-  </section>
+  <section class="contact" id="contact">     
+  <h2>Contact Us</h2>     
+  <h6 style="font-size: 25px;padding-bottom: 15px;color: #2d6582;">
+    "Have questions? Need service? We’re friendly, local, and ready to help."
+  </h6>     
+
+  <form name="contact" method="POST" data-netlify="true">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <textarea name="service" placeholder="Service Needed" required></textarea>
+    <button type="submit">Send Request</button>
+  </form>   
+</section>
+
 
 
 <div >
